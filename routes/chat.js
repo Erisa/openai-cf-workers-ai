@@ -2,7 +2,7 @@ import { Ai } from '@cloudflare/ai';
 
 export const chatHandler = async (request, env) => {
 	const ai = new Ai(env.AI);
-	let model = '@cf/mistral/mistral-7b-instruct-v0.1';
+	let model = '@cf/meta/llama-3-8b-instruct';
 	let messages = [];
 	let error = null;
 
@@ -12,7 +12,7 @@ export const chatHandler = async (request, env) => {
 
 	try {
 		// If the POST data is JSON then attach it to our response.
-		if (request.headers.get('Content-Type') === 'application/json') {
+		// if (request.headers.get('Content-Type') === 'application/json') {
 			let json = await request.json();
 			// when there is more than one model available, enable the user to select one
 			if (json?.model) {
@@ -116,7 +116,9 @@ export const chatHandler = async (request, env) => {
 					total_tokens: 0,
 				},
 			});
-		}
+		// } else {
+			// return Response.json({ error: "no json"}, { status: 400})
+		// }
 	} catch (e) {
 		error = e;
 	}

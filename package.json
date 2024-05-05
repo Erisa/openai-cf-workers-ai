@@ -11,7 +11,7 @@
 		"test": "vitest"
 	},
 	"dependencies": {
-		"@cloudflare/ai": "^1.0.15",
+		"@cloudflare/ai": "^1.1.0",
 		"itty-router": "^4.2.2"
 	},
 	"devDependencies": {
